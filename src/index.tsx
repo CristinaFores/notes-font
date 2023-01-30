@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import App from "./components/App/App";
 import reportWebVitals from "./reportWebVitals";
-import mainStyleColors from "./style/themeColors";
 import "@fontsource/montserrat";
 import GlobalStyle from "./style/GlobalStyle";
+import mainStyleColors from "./style/themeColors";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
