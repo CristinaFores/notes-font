@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: "Montserrat";
-background-color: #000;
+   background-color: #000;
 }
 
 
