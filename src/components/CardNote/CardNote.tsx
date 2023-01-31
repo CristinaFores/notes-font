@@ -22,8 +22,8 @@ const CardNote = ({ title, date, description }: CardNoteProps): JSX.Element => {
             <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
           </button>
         </ContainIconEditStyled>
-        <h4>{title}</h4>
-        <span>{date}</span>
+        <h4>{title.toUpperCase().substring(1, 0) + title.substring(1)}</h4>
+        <span>{new Date(date || "").toLocaleDateString()}</span>
         <p>{description}</p>
       </CardNoteStyled>
     </>
