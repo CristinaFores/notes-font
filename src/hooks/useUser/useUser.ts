@@ -6,8 +6,8 @@ import {
   UserCredentials,
 } from "./types";
 import { useNavigate } from "react-router-dom";
-import { JwtPayloadCustom } from "../../components/utils/types";
-import decodeToken from "../../components/utils/decode";
+import { JwtPayloadCustom } from "../../utils/types";
+import decodeToken from "../../utils/decode";
 
 const useUser = () => {
   const urlApi = process.env.REACT_APP_API_URL;
