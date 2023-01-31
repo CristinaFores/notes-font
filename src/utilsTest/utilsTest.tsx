@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../style/GlobalStyle";
 import mainStyleColors from "../style/themeColors";
@@ -10,7 +11,7 @@ export const ProviderWrapper = ({ children }: ProviderWrapperProps) => {
   return (
     <ThemeProvider theme={mainStyleColors}>
       <GlobalStyle />
-      {children}
+      <BrowserRouter>{children}</BrowserRouter>
     </ThemeProvider>
   );
 };
