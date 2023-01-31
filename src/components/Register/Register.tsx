@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { RegisterData } from "../../hooks/useUser/types";
 import useUser from "../../hooks/useUser/useUser";
 
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { RegisterStyled } from "./RegisterStyled";
+import { RegisterStyled, TextSpanStyled } from "./RegisterStyled";
 
 const Register = (): JSX.Element => {
   const { register } = useUser();
@@ -75,6 +76,11 @@ const Register = (): JSX.Element => {
         text="Registrate"
         disabled={isFormEmpty()}
       />
+
+      <TextSpanStyled>
+        <span>¿Ya tienes una cuenta? </span>
+        <Link to={"/login"}> Entrar</Link>
+      </TextSpanStyled>
     </RegisterStyled>
   );
 };
