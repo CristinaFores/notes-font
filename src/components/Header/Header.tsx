@@ -4,6 +4,7 @@ const Header = (): JSX.Element => {
   return (
     <>
       <HeaderStyled>
+        <h1>Blackboards & Notes</h1>
         <section>
           <div></div>
           <div></div>
@@ -11,7 +12,6 @@ const Header = (): JSX.Element => {
           <div></div>
           <div></div>
         </section>
-        <h1>Blackboards & Notes</h1>
       </HeaderStyled>
     </>
   );
