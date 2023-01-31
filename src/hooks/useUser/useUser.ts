@@ -53,6 +53,8 @@ const useUser = () => {
   const register = async (credencials: RegisterData) => {
     try {
       await axios.post(`${urlApi}/register`, credencials);
+
+      navigate("/login");
     } catch (error: unknown) {
       const response = (
         error as AxiosError<AxiosResponseBody>
