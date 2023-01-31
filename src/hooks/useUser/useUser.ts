@@ -1,5 +1,10 @@
 import axios, { AxiosError } from "axios";
-import { AxiosResponseBody, User, UserCredentials } from "./types";
+import {
+  AxiosResponseBody,
+  RegisterData,
+  User,
+  UserCredentials,
+} from "./types";
 import { useNavigate } from "react-router-dom";
 import { JwtPayloadCustom } from "../../components/utils/types";
 import decodeToken from "../../components/utils/decode";
@@ -45,7 +50,29 @@ const useUser = () => {
     }
   };
 
-  return { login };
+  const register = async (credencials: RegisterData) => {
+    try {
+      await axios.post(`${urlApi}/register`, credencials);
+    } catch (error: unknown) {
+      const response = (
+        error as AxiosError<AxiosResponseBody>
+      ).response?.data?.details?.body
+        .map((object) => object.message)
+        .join(" . ");
+
+      const data = (error as AxiosError<AxiosResponseBody>).response?.data
+        .error;
+
+      if (response) {
+        return response;
+      }
+      if (data) {
+        return data;
+      }
+    }
+  };
+
+  return { login, register };
 };
 
 export default useUser;
