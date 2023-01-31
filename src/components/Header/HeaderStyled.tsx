@@ -9,7 +9,7 @@ export const HeaderStyled = styled.header`
   section {
     display: flex;
     gap: 0.3rem;
-    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
   }
 
   div {
