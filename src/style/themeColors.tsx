@@ -8,9 +8,9 @@ const mainStyleColors: DefaultTheme = {
       light: "#fff",
     },
     button: {
-      active: "#b388ff",
-      hover: "#711fb0",
-      disable: "rgba(113, 31, 176, 0.501)",
+      hover: "#b388ff",
+      active: "#711fb0",
+      disable: "#b488ff82",
     },
   },
 };

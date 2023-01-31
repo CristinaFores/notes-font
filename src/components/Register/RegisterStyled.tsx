@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const RegisterStyled = styled.form`
-  max-width: 400px;
-  padding: 2rem 1rem;
+  max-width: 420px;
+  padding: 3.2rem 1rem;
   margin-bottom: 2rem;
   color: ${(props) => props.theme.colors.primary.light};
   border-radius: 6px;
@@ -25,11 +25,11 @@ export const RegisterStyled = styled.form`
 export const TextSpanStyled = styled.div`
   color: ${(props) => props.theme.colors.primary.light};
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
 
   span,
   a {
@@ -38,5 +38,8 @@ export const TextSpanStyled = styled.div`
 
   a {
     color: ${(props) => props.theme.colors.button.active};
+    &:hover {
+      color: ${(props) => props.theme.colors.button.hover};
+    }
   }
 `;
