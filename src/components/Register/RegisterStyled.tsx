@@ -25,7 +25,7 @@ export const RegisterStyled = styled.form`
 export const TextSpanStyled = styled.div`
   color: ${(props) => props.theme.colors.primary.light};
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;

@@ -39,6 +39,7 @@ const Register = (): JSX.Element => {
     };
     await register(formDataToSubmit);
   };
+
   const isFormEmpty = () => {
     return Object.values(formData).some((data) => data === "");
   };
