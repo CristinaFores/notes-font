@@ -6,7 +6,7 @@ export const CardNoteStyled = styled.li`
   background: #ffc;
   display: block;
   min-height: 18rem;
-  max-width: 20rem;
+  width: 20rem;
   word-break: break-all;
   border-radius: 9px 9px 0 0;
   h4,
@@ -17,6 +17,10 @@ export const CardNoteStyled = styled.li`
 
   p {
     font-size: 1rem;
+  }
+
+  span {
+    padding: 0.5rem;
   }
 
   @media (max-width: 600px) {
