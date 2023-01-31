@@ -76,7 +76,7 @@ const Login = () => {
         />
 
         <TextSpanStyled>
-          <span>¿Ya tienes una cuenta? </span>
+          <span>¿Ya tienes una cuenta?</span>
           <Link to={"/register"}>Registrarte</Link>
         </TextSpanStyled>
       </RegisterStyled>
