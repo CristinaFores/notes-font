@@ -52,14 +52,7 @@ const Login = () => {
           textLabel="Nombre"
           onChange={handleInputChange}
         />
-        <Input
-          type="email"
-          placeholder="Email"
-          htmlFor="email"
-          id="email"
-          textLabel="Email"
-          onChange={handleInputChange}
-        />
+
         <Input
           type="password"
           htmlFor="password"
