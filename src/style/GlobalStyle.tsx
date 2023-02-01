@@ -1,18 +1,33 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+:root{
+   --color-primary: #df6464;
+  --color-secondary: #ccff90;
+  --color-tertiary: #ffff8d;
+  --color-quaternary: #a0afff;
+  --color-base: #ffc;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 
 }
-
+html, body{
+  margin: 0 
+ 
+}
 
 body {
   font-family: "Montserrat";
   background-color: #000;
 
+}
+
+body{
+   overflow-x: hidden;
 }
 
 img {
@@ -50,5 +65,8 @@ a {
   color: inherit;
   cursor: pointer;
 }
+
+
+
 `;
 export default GlobalStyle;
