@@ -8,11 +8,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { JwtPayloadCustom } from "../../utils/types";
 import decodeToken from "../../utils/decode";
+import { useState } from "react";
 
 const useUser = () => {
   const urlApi = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
-
+  const [user, setUser] = useState<User | null>(null);
   const login = async (credencials: UserCredentials) => {
     try {
       const response = await axios.post(`${urlApi}/login`, credencials);
@@ -28,9 +29,10 @@ const useUser = () => {
       };
 
       localStorage.setItem("token", token);
+      localStorage.setItem("username", tokenPayload.username);
 
       navigate("/home");
-      return loggedUser;
+      return setUser(loggedUser);
     } catch (error: unknown) {
       const response = (
         error as AxiosError<AxiosResponseBody>
@@ -74,7 +76,7 @@ const useUser = () => {
     }
   };
 
-  return { login, register };
+  return { login, register, user, setUser };
 };
 
 export default useUser;
