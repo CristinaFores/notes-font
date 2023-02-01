@@ -4,16 +4,56 @@ import {
   faPenToSquare,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
+import { useNotes } from "../../hooks/useNotes/useNotes";
+import { useEffect } from "react";
+
+export enum Category {
+  "personal",
+  "trabajo",
+  "estudio",
+  "otro",
+}
 
 interface CardNoteProps {
   title: string;
   date?: string;
   description?: string;
+  category?: Category | any;
 }
-const CardNote = ({ title, date, description }: CardNoteProps): JSX.Element => {
+
+const CardNote = ({
+  title,
+  date,
+  description,
+  category,
+}: CardNoteProps): JSX.Element => {
+  const { getNotes } = useNotes();
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
+
+  const categoryColor = (category: string) => {
+    switch (category) {
+      case "personal":
+        return "var(--color-primary)";
+      case "trabajo":
+        return "var(--color-secondary)";
+      case "estudio":
+        return "var(--color-tertiary)";
+      case "otro":
+        return "var(--color-quaternary)";
+      default:
+        return "var(--color-base)";
+    }
+  };
+
   return (
     <>
-      <CardNoteStyled>
+      <CardNoteStyled
+        style={{
+          backgroundColor: categoryColor(category),
+        }}
+      >
         <ContainIconEditStyled>
           <button onClick={() => {}} aria-label="editar">
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
