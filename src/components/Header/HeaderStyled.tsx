@@ -10,6 +10,7 @@ export const HeaderStyled = styled.header`
     display: flex;
     gap: 0.3rem;
     margin-top: 1.2rem;
+    justify-content: center;
   }
 
   div {

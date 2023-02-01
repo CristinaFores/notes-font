@@ -5,17 +5,15 @@ const GlobalStyle = createGlobalStyle`
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0 auto;
+
 }
 
 
 body {
   font-family: "Montserrat";
-   background-color: #000;
+  background-color: #000;
+
 }
-
-
-
 
 img {
   display: block;
@@ -23,12 +21,10 @@ img {
   
 }
 
-
 ul {
     list-style: none;
     list-style-position: outside;
     padding: 0;
-
 }
 
 input,
