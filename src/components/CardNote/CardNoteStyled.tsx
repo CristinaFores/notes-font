@@ -6,7 +6,7 @@ export const CardNoteStyled = styled.li`
   background: #ffc;
   display: block;
   min-height: 18rem;
-  width: 20rem;
+  min-width: 20rem;
   word-break: break-all;
   border-radius: 9px 9px 0 0;
   h4,
