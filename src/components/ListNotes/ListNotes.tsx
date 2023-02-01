@@ -1,8 +1,7 @@
-import { read } from "fs";
 import { useEffect } from "react";
 import { Note } from "../../hooks/useNotes/types";
 import { useNotes } from "../../hooks/useNotes/useNotes";
-import CardNote, { Category } from "../CardNote/CardNote";
+import CardNote from "../CardNote/CardNote";
 import { ListNotesStyled } from "./ListNotesStyled";
 
 const ListNotes = (): JSX.Element => {
