@@ -9,6 +9,7 @@ export const RegisterStyled = styled.form`
   background-color: ${(props) => props.theme.colors.primary.base};
   box-shadow: 0px 0px 4px 0px #757575;
 
+  margin: 0 auto;
   input,
   button {
     margin-top: 0.5rem;

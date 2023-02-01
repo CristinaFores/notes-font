@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CardNoteStyled = styled.li`
   text-decoration: none;
   color: #000;
+
   background: #ffc;
   display: block;
   min-height: 18rem;
@@ -33,7 +34,7 @@ export const ContainIconEditStyled = styled.div`
   justify-content: end;
   gap: 10px;
   border-radius: 6px 6px 0 0px;
-  border-bottom: solid 1px ${(props) => props.theme.colors.button.active};
+  border-bottom: solid 1px ${(props) => props.theme.colors.primary.base};
   background-color: ${(props) => props.theme.colors.primary.base};
 
   button {

@@ -8,6 +8,7 @@ export interface Note {
   description: string;
   date?: string;
   buckpicture?: string[];
+  category?: string;
 }
 
 export interface UiState {

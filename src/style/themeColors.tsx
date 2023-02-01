@@ -4,7 +4,7 @@ const mainStyleColors: DefaultTheme = {
   colors: {
     primary: {
       base: "#161616",
-      dark: "#000",
+      dark: "#000000",
       light: "#fff",
     },
     button: {
