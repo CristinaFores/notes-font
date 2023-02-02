@@ -5,6 +5,7 @@ import ListNotes from "../ListNotes/ListNotes";
 import Login from "../Login/Login";
 import Navbar from "../NavBar/Navbar";
 import Register from "../Register/Register";
+import FormNote from "../FormNote/FormNote";
 
 const Layout = (): JSX.Element => {
   const username = localStorage.getItem("username");
@@ -12,7 +13,7 @@ const Layout = (): JSX.Element => {
   return (
     <>
       <Header />
-      {username !== "" ? (
+      {username ? (
         <Navbar
           name={
             username?.toUpperCase().substring(0, 1)! + username?.substring(1)
