@@ -8,6 +8,7 @@ export interface Note {
   description: string;
   date?: string;
   buckpicture?: string[];
+  image?: File[] | string[];
   category?: string;
 }
 
