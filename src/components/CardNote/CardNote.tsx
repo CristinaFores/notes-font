@@ -19,6 +19,7 @@ interface CardNoteProps {
   date?: string;
   description?: string;
   category?: Category | any;
+  image?: string[];
 }
 
 const CardNote = ({
@@ -26,6 +27,7 @@ const CardNote = ({
   date,
   description,
   category,
+  image,
 }: CardNoteProps): JSX.Element => {
   const { getNotes } = useNotes();
   useEffect(() => {
@@ -65,6 +67,10 @@ const CardNote = ({
         <h4>{title.toUpperCase().substring(1, 0) + title.substring(1)}</h4>
         <span>{new Date(date || "").toLocaleDateString()}</span>
         <p>{description}</p>
+
+        {image?.map((img) => (
+          <img key={img} src={img} alt="imagen" />
+        ))}
       </CardNoteStyled>
     </>
   );
