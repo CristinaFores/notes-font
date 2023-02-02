@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Note } from "../../hooks/useNotes/types";
-import { useNotes } from "../../hooks/useNotes/useNotes";
+import useNotes from "../../hooks/useNotes/useNotes";
 import CardNote from "../CardNote/CardNote";
 import { ListNotesStyled } from "./ListNotesStyled";
 
