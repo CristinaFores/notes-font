@@ -14,7 +14,11 @@ const ListNotes = (): JSX.Element => {
     <>
       {notes.length < 1 ? (
         <ListNotesStyled>
-          <CardNote title="Nueva nota" description="empieza escribir..." />
+          <CardNote
+            title="Nueva nota"
+            description="empieza escribir..."
+            date={new Date().toString() || ""}
+          />
         </ListNotesStyled>
       ) : (
         <ListNotesStyled>
@@ -26,6 +30,7 @@ const ListNotes = (): JSX.Element => {
                 date={note.date}
                 key={note.id}
                 category={note.category}
+                image={note.buckpicture!}
               />
             ))
             .sort((a, b) => b.props.date - a.props.date)}

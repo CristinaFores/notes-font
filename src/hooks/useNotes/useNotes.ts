@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Note, UiState } from "./types";
 
 const initialUiState: UiState = {
@@ -15,6 +16,7 @@ const showLoading = { ...initialUiState, isLoading: true };
 const hiddeLoading = { ...initialUiState, isLoading: false };
 
 export const useNotes = () => {
+  const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
   // const [note, setNote] = useState<Note>();
   // const [noteId, setNoteId] = useState("");
@@ -47,9 +49,38 @@ export const useNotes = () => {
     }
   }, [token, setNotes, apiUrl, setuiState]);
 
+  const createNote = useCallback(
+    async (note: Note) => {
+      setuiState(showLoading);
+      try {
+        await axios.post<Note>(`${apiUrl}/note/`, note, {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        setuiState(hiddeLoading);
+        navigate("/home");
+      } catch (error: unknown) {
+        setuiState({
+          modal: {
+            showModal: false,
+            isError: true,
+            text: "No hay ninguna nota disponible",
+          },
+
+          isLoading: false,
+        });
+      }
+    },
+    [apiUrl, token, navigate]
+  );
+
   return {
     notes,
     uiState,
     getNotes,
+    createNote,
   };
 };
