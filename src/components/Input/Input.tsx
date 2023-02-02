@@ -10,6 +10,7 @@ interface InputProps {
   autoComplete?: string;
   id?: string;
   textLabel: string;
+  name?: React.InputHTMLAttributes<HTMLInputElement>["name"];
 }
 
 const Input = ({
@@ -21,6 +22,7 @@ const Input = ({
   autoComplete,
   id,
   textLabel,
+  name,
 }: InputProps) => {
   return (
     <>
@@ -32,6 +34,7 @@ const Input = ({
         required={required}
         autoComplete={autoComplete}
         id={id}
+        name={name}
       />
     </>
   );
