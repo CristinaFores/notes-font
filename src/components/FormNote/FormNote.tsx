@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Note } from "../../hooks/useNotes/types";
-import { useNotes } from "../../hooks/useNotes/useNotes";
+import useNotes from "../../hooks/useNotes/useNotes";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { InputLabelStyled } from "../Input/InputStyled";
@@ -80,6 +80,7 @@ const FormNote = (): JSX.Element => {
           onChange={handleFileChange}
           defaultValue=""
         ></textarea>
+
         <Input
           type="file"
           name="image"
