@@ -26,22 +26,18 @@ describe("Given Login component", () => {
       const expectIinputName = screen.queryByRole("textbox", {
         name: "Nombre",
       })!;
-      const expectIinputEmail = screen.queryByRole("textbox", {
-        name: "Email",
-      })!;
+
       const passwordInput = screen.queryByLabelText("Contraseña")!;
       const button = screen.queryByRole("button", {
         name: nameButton,
       })!;
 
       await userEvent.type(expectIinputName, "1234567891");
-      await userEvent.type(expectIinputEmail, "cris@mil.com");
       await userEvent.type(passwordInput, "Cristina");
       await userEvent.click(button);
 
       expect(login).toHaveBeenCalled();
       expect(expectIinputName).toBeInTheDocument();
-      expect(expectIinputEmail).toBeInTheDocument();
       expect(passwordInput).toBeInTheDocument();
       expect(renderLink).toBeInTheDocument();
     });
