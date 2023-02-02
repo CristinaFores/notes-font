@@ -4,7 +4,7 @@ import {
   faPenToSquare,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
-import { useNotes } from "../../hooks/useNotes/useNotes";
+import useNotes from "../../hooks/useNotes/useNotes";
 import { useEffect } from "react";
 
 export enum Category {
