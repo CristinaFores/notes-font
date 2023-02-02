@@ -1,18 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../../style/GlobalStyle";
-import mainStyleColors from "../../style/themeColors";
+import { ProviderWrapper } from "../../utilsTest/utilsTest";
 import CardNote from "./CardNote";
 
 describe("Given component CardNote", () => {
   describe("When it render", () => {
     test("Then its should show card with title: 'Note, button and list", () => {
-      render(
-        <ThemeProvider theme={mainStyleColors}>
-          <GlobalStyle />
-          <CardNote title={"Note"} />
-        </ThemeProvider>
-      );
+      render(<ProviderWrapper children={<CardNote title={"Note"} />} />);
 
       const expectList = screen.getByRole("listitem");
       const expectButton = screen.getAllByRole("button");
