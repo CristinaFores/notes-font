@@ -15,7 +15,7 @@ const initialUiState: UiState = {
 const showLoading = { ...initialUiState, isLoading: true };
 const hiddeLoading = { ...initialUiState, isLoading: false };
 
-export const useNotes = () => {
+const useNotes = () => {
   const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
   // const [note, setNote] = useState<Note>();
@@ -84,3 +84,5 @@ export const useNotes = () => {
     createNote,
   };
 };
+
+export default useNotes;
