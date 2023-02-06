@@ -130,21 +130,21 @@ const Layout = (): JSX.Element => {
     const sInd = source.droppableId;
     const dInd = destination.droppableId;
 
-    if (sInd === dInd) {
-      const items = reorder(state[sInd], source.index, destination.index);
-      const newState = [...state];
-      newState[sInd] = items;
-      setState(newState);
-    } else {
-      console.log(sInd, dInd);
-      console.log(state[sInd], state[dInd]);
-      const result = move(state[sInd], state[dInd], source, destination);
-      const newState = [...state];
-      newState[sInd] = result[sInd];
-      newState[dInd] = result[dInd];
+    // if (sInd === dInd) {
+    //   const items = reorder(state[sInd], source.index, destination.index);
+    //   const newState = [...state];
+    //   newState[sInd] = items;
+    //   setState(newState);
+    // } else {
+    //   console.log(sInd, dInd);
+    //   console.log(state[sInd], state[dInd]);
+    //   const result = move(state[sInd], state[dInd], source, destination);
+    //   const newState = [...state];
+    //   newState[sInd] = result[sInd];
+    //   newState[dInd] = result[dInd];
 
-      setState(newState.filter((group) => group.length));
-    }
+    //   setState(newState.filter((group) => group.length));
+    // }
   }
 
   return (
