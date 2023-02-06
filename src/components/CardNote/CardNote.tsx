@@ -5,7 +5,6 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import useNotes from "../../hooks/useNotes/useNotes";
-import { useEffect } from "react";
 
 export enum Category {
   "personal",
@@ -20,6 +19,7 @@ interface CardNoteProps {
   description?: string;
   category?: Category | any;
   image?: string[];
+  id?: string;
 }
 
 const CardNote = ({
@@ -28,12 +28,13 @@ const CardNote = ({
   description,
   category,
   image,
+  id,
 }: CardNoteProps): JSX.Element => {
-  const { getNotes } = useNotes();
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
+  const { deleteNote } = useNotes();
 
+  const handleDelete = () => {
+    deleteNote(id!);
+  };
   const categoryColor = (category: string) => {
     switch (category) {
       case "personal":
@@ -60,7 +61,7 @@ const CardNote = ({
           <button onClick={() => {}} aria-label="editar">
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
-          <button onClick={() => {}} aria-label="borrar">
+          <button onClick={handleDelete} aria-label="borrar">
             <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
           </button>
         </ContainIconEditStyled>

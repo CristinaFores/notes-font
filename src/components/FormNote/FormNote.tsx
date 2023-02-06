@@ -44,8 +44,10 @@ const FormNote = (): JSX.Element => {
 
     setFormNote({
       ...formNote,
-      [event.target.value]: event.target.value,
+      [event.target.id || event.target.value]:
+        event.target.value || event.target.id,
     });
+    console.log(formNote);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +59,7 @@ const FormNote = (): JSX.Element => {
       image: formNote.image,
       category: formNote.category,
     };
-
+    console.log(formDataToSubmit);
     await createNote(formDataToSubmit as Note);
   };
 
