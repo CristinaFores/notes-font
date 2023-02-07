@@ -1,11 +1,15 @@
-import { CardNoteStyled, ContainIconEditStyled } from "./CardNoteStyled";
+import {
+  CardNoteStyled,
+  CategoryCircleStyled,
+  ContainIconEditStyled,
+  ContaintNoteStyled,
+} from "./CardNoteStyled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPenToSquare,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import useNotes from "../../hooks/useNotes/useNotes";
-import { useEffect } from "react";
 
 export enum Category {
   "personal",
@@ -20,6 +24,7 @@ interface CardNoteProps {
   description?: string;
   category?: Category | any;
   image?: string[];
+  id?: string;
 }
 
 const CardNote = ({
@@ -28,11 +33,9 @@ const CardNote = ({
   description,
   category,
   image,
+  id,
 }: CardNoteProps): JSX.Element => {
-  const { getNotes } = useNotes();
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
+  const { deleteNote } = useNotes();
 
   const categoryColor = (category: string) => {
     switch (category) {
@@ -49,28 +52,38 @@ const CardNote = ({
     }
   };
 
+  const handleDelete = () => {
+    deleteNote(id!);
+  };
+
   return (
     <>
-      <CardNoteStyled
-        style={{
-          backgroundColor: categoryColor(category),
-        }}
-      >
+      <CardNoteStyled>
         <ContainIconEditStyled>
+          <CategoryCircleStyled>
+            <div
+              style={{
+                backgroundColor: categoryColor(category),
+              }}
+            ></div>
+          </CategoryCircleStyled>
+
           <button onClick={() => {}} aria-label="editar">
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
-          <button onClick={() => {}} aria-label="borrar">
+          <button onClick={handleDelete} aria-label="borrar">
             <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
           </button>
         </ContainIconEditStyled>
-        <h4>{title.toUpperCase().substring(1, 0) + title.substring(1)}</h4>
-        <span>{new Date(date || "").toLocaleDateString()}</span>
-        <p>{description}</p>
 
-        {image?.map((img) => (
-          <img key={img} src={img} alt="imagen" />
-        ))}
+        <ContaintNoteStyled>
+          <h4>{title.toUpperCase().substring(1, 0) + title.substring(1)}</h4>
+          <span>{new Date(date || "").toLocaleDateString()}</span>
+          <p>{description}</p>
+          {image?.map((img) => (
+            <img key={img} src={img} alt="imagen" />
+          ))}
+        </ContaintNoteStyled>
       </CardNoteStyled>
     </>
   );

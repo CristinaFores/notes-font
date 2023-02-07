@@ -10,6 +10,7 @@ export interface Note {
   buckpicture?: string[];
   image?: File[] | string[];
   category?: string;
+  status?: string;
 }
 
 export interface UiState {

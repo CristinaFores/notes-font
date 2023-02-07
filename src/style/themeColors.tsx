@@ -12,6 +12,10 @@ const mainStyleColors: DefaultTheme = {
       active: "#711fb0",
       disable: "#b488ff82",
     },
+    draggable: {
+      base: "#fefe6f",
+      dark: "#ebc8fe",
+    },
   },
 };
 

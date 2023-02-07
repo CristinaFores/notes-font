@@ -18,8 +18,8 @@ const hiddeLoading = { ...initialUiState, isLoading: false };
 const useNotes = () => {
   const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
-  // const [note, setNote] = useState<Note>();
-  // const [noteId, setNoteId] = useState("");
+  const [note, setNote] = useState<Note>();
+  const [noteId, setNoteId] = useState("");
   const [uiState, setuiState] = useState<UiState>(initialUiState);
 
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -63,6 +63,7 @@ const useNotes = () => {
         setuiState(hiddeLoading);
         navigate("/home");
       } catch (error: unknown) {
+        setuiState(hiddeLoading);
         setuiState({
           modal: {
             showModal: false,
@@ -76,12 +77,74 @@ const useNotes = () => {
     },
     [apiUrl, token, navigate]
   );
+  const deleteNote = useCallback(
+    async (id: string) => {
+      setuiState(showLoading);
+      try {
+        const { data } = await axios.delete<Note>(`${apiUrl}/note/${id}`, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+
+        setuiState(hiddeLoading);
+        setNoteId(data.id!);
+        setuiState({
+          modal: {
+            showModal: true,
+            isError: false,
+            text: "Nota eliminada correctamente",
+          },
+          isLoading: false,
+        });
+      } catch (error: unknown) {
+        setuiState(hiddeLoading);
+        setuiState({
+          modal: {
+            showModal: false,
+            isError: true,
+            text: "No hay ninguna nota disponible",
+          },
+
+          isLoading: false,
+        });
+      }
+    },
+    [apiUrl, token]
+  );
+
+  const updateStatusNote = useCallback(
+    async (id: string, note: Note) => {
+      setuiState(showLoading);
+
+      try {
+        await axios.patch<Note>(`${apiUrl}/note/${id}`, note, {
+          headers: {
+            Accept: "*/*",
+            Autorización: "Bearer " + token,
+          },
+        });
+
+        navigate("/home");
+        setuiState(hiddeLoading);
+      } catch (error: unknown) {
+        setuiState(hiddeLoading);
+      }
+    },
+    [apiUrl, navigate, token]
+  );
 
   return {
     notes,
     uiState,
+    note,
+    noteId,
+    setNotes,
+    setNote,
     getNotes,
     createNote,
+    deleteNote,
+    updateStatusNote,
   };
 };
 
