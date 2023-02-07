@@ -13,6 +13,10 @@ declare module "styled-components" {
         hover: string;
         disable: string;
       };
+      draggable: {
+        base: string;
+        dark: string;
+      };
     };
   }
 }
