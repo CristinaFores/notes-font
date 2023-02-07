@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const CardNoteStyled = styled.li`
   text-decoration: none;
   color: #000;
-
-  background: #ffc;
   display: block;
   min-height: 10rem;
   min-width: 20rem;
@@ -41,10 +39,8 @@ export const ContainIconEditStyled = styled.div`
     border: none;
     background-color: transparent;
     padding: 0;
-    margin: 0;
-    margin-right: 1rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
+    margin: 0.5rem 1rem 0.5rem 0;
+
     svg {
       font-size: 1.9rem;
       color: ${(props) => props.theme.colors.primary.light};
@@ -52,5 +48,28 @@ export const ContainIconEditStyled = styled.div`
         color: ${(props) => props.theme.colors.button.hover};
       }
     }
+  }
+`;
+
+export const CategoryCircleStyled = styled.section`
+  gap: 10px;
+  display: flex;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  align-items: center;
+  flex-grow: 1;
+  div {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+  }
+`;
+
+export const ContaintNoteStyled = styled.div`
+  :hover {
+    background-color: ${(props) => props.theme.colors.draggable.base};
+    min-height: 7rem;
+    border-radius: 0px 0px 8px 8px;
   }
 `;
