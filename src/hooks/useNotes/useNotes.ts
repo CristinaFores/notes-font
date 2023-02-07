@@ -113,15 +113,38 @@ const useNotes = () => {
     [apiUrl, token]
   );
 
+  const updateStatusNote = useCallback(
+    async (id: string, note: Note) => {
+      setuiState(showLoading);
+
+      try {
+        await axios.patch<Note>(`${apiUrl}/note/${id}`, note, {
+          headers: {
+            Accept: "*/*",
+            Autorización: "Bearer " + token,
+          },
+        });
+
+        navigate("/home");
+        setuiState(hiddeLoading);
+      } catch (error: unknown) {
+        setuiState(hiddeLoading);
+      }
+    },
+    [apiUrl, navigate, token]
+  );
+
   return {
     notes,
     uiState,
     note,
     noteId,
+    setNotes,
     setNote,
     getNotes,
     createNote,
     deleteNote,
+    updateStatusNote,
   };
 };
 
