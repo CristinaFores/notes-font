@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const LayoutStyled = styled.main`
   padding: 20px;
+  display: flex;
+
   .container {
-    width: 400px;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    width: 400px;
+    height: 400px;
     border-radius: 6px;
     background-color: ${(props) => props.theme.colors.primary.light};
   }
