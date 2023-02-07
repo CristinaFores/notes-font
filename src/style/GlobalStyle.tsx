@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   --color-tertiary: #ffff8d;
   --color-quaternary: #a0afff;
   --color-base: #ffc;
+
 }
 
 *,
