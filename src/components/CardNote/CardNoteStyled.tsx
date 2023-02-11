@@ -1,29 +1,27 @@
 import styled from "styled-components";
 
-export const CardNoteStyled = styled.li`
+export const CardNoteStyled = styled.div`
   text-decoration: none;
   color: #000;
   display: block;
-  min-height: 10rem;
-  min-width: 20rem;
+  min-height: 5rem;
+  min-width: 5rem;
   word-break: break-all;
   border-radius: 9px 9px 0 0;
+
   h4,
   p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     padding: 0.5rem;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   span {
     padding: 0.5rem;
-  }
-
-  @media (max-width: 600px) {
-    min-height: 12rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -52,7 +50,6 @@ export const ContainIconEditStyled = styled.div`
 `;
 
 export const CategoryCircleStyled = styled.section`
-  gap: 10px;
   display: flex;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
@@ -69,7 +66,7 @@ export const CategoryCircleStyled = styled.section`
 export const ContaintNoteStyled = styled.div`
   :hover {
     background-color: ${(props) => props.theme.colors.draggable.base};
-    min-height: 7rem;
+    min-height: 5rem;
     border-radius: 0px 0px 8px 8px;
   }
 `;
