@@ -1,41 +1,48 @@
 import { useEffect } from "react";
+import { Draggable } from "react-beautiful-dnd";
 import { Note } from "../../hooks/useNotes/types";
 import useNotes from "../../hooks/useNotes/useNotes";
 import CardNote from "../CardNote/CardNote";
+import { getItemStyle } from "../Trello/TrelloStyled";
 import { ListNotesStyled } from "./ListNotesStyled";
+interface ListNotesProps {
+  item: Note;
+  index: number;
+}
 
-const ListNotes = (): JSX.Element => {
-  const { getNotes, notes } = useNotes();
+const ListNotes = ({ item, index }: ListNotesProps): JSX.Element => {
+  const { getNotes } = useNotes();
+
   useEffect(() => {
     getNotes();
   }, [getNotes]);
 
   return (
     <>
-      {notes.length < 1 ? (
-        <ListNotesStyled>
-          <CardNote
-            title="Nueva nota"
-            description="empieza escribir..."
-            date={new Date().toString() || ""}
-          />
-        </ListNotesStyled>
-      ) : (
-        <ListNotesStyled>
-          {notes
-            ?.map((note: Note) => (
+      <ListNotesStyled>
+        <Draggable key={item.id} draggableId={item.id!} index={index}>
+          {(provided, snapshot) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              style={getItemStyle(
+                snapshot.isDragging,
+                provided.draggableProps.style,
+                item.category!
+              )}
+            >
               <CardNote
-                title={note.title}
-                description={note.description}
-                date={note.date}
-                key={note.id}
-                category={note.category}
-                image={note.buckpicture!}
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                date={item.date}
+                category={item.category}
               />
-            ))
-            .sort((a, b) => b.props.date - a.props.date)}
-        </ListNotesStyled>
-      )}
+            </div>
+          )}
+        </Draggable>
+      </ListNotesStyled>
     </>
   );
 };
