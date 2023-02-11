@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Note, UiState } from "./types";
 
@@ -12,6 +12,13 @@ const initialUiState: UiState = {
   isLoading: false,
 };
 
+export const initialNote: Note = {
+  title: "",
+  description: "",
+  category: "",
+  status: "column-1",
+  image: [],
+};
 const showLoading = { ...initialUiState, isLoading: true };
 const hiddeLoading = { ...initialUiState, isLoading: false };
 
@@ -47,7 +54,7 @@ const useNotes = () => {
         isLoading: false,
       });
     }
-  }, [token, setNotes, apiUrl, setuiState]);
+  }, [apiUrl, token]);
 
   const createNote = useCallback(
     async (note: Note) => {
@@ -115,24 +122,26 @@ const useNotes = () => {
 
   const updateStatusNote = useCallback(
     async (id: string, note: Note) => {
-      setuiState(showLoading);
-
       try {
-        await axios.patch<Note>(`${apiUrl}/note/${id}`, note, {
-          headers: {
-            Accept: "*/*",
-            Autorización: "Bearer " + token,
-          },
-        });
+        const { data } = await axios.patch<Note>(
+          `${apiUrl}/notes/${id}`,
+          note,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
 
-        navigate("/home");
-        setuiState(hiddeLoading);
-      } catch (error: unknown) {
-        setuiState(hiddeLoading);
-      }
+        setNote(data);
+      } catch (error: unknown) {}
     },
-    [apiUrl, navigate, token]
+    [apiUrl, token]
   );
+
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
 
   return {
     notes,
