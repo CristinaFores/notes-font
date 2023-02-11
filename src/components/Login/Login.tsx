@@ -60,6 +60,7 @@ const Login = () => {
           placeholder="Contraseña"
           textLabel="Contraseña"
           onChange={handleInputChange}
+          autoComplete="off"
         />
         <Button
           ariaLabel="Entrar"
