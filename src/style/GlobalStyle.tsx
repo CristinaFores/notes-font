@@ -13,23 +13,49 @@ const GlobalStyle = createGlobalStyle`
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+
 
 }
-html, body{
-  margin: 0 
- 
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #161616;
+
+
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border-radius: 10px;
+    border: 0.5px solid #711fb08b;
+    
+
+  }
+
+
+html{
+  overflow: auto;
+
 }
 
 body {
   font-family: "Montserrat";
   background-color: #000;
+  margin: 0 auto;
+  padding: 0;
+
+  
+
+
 
 }
 
-body{
-   overflow-x: hidden;
-}
+
 
 img {
   display: block;
