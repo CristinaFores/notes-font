@@ -10,22 +10,24 @@ interface NavbarProps {
 
 const Navbar = ({ name }: NavbarProps): JSX.Element => {
   return (
-    <NavbarStyled className="menu">
-      <li className="profile">
-        <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
-        <h3>{name}</h3>
-      </li>
-      <li>
-        <NavLink to={"/newnote"} aria-label="Nueva publicacion">
-          <FontAwesomeIcon className="icon-navbar" icon={faSquarePlus} />
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/home"} aria-label="Inicio">
-          <FontAwesomeIcon className="icon-navbar" icon={faHouse} />
-        </NavLink>
-      </li>
-    </NavbarStyled>
+    <nav>
+      <NavbarStyled>
+        <li className="profile">
+          <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
+          <h3>{name}</h3>
+        </li>
+        <li>
+          <NavLink to={"/newnote"} aria-label="Nueva publicacion">
+            <FontAwesomeIcon className="icon-navbar" icon={faSquarePlus} />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={"/home"} aria-label="Inicio">
+            <FontAwesomeIcon className="icon-navbar" icon={faHouse} />
+          </NavLink>
+        </li>
+      </NavbarStyled>
+    </nav>
   );
 };
 
