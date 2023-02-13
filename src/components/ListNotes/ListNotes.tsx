@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Note } from "../../hooks/useNotes/types";
-import useNotes from "../../hooks/useNotes/useNotes";
 import CardNote from "../CardNote/CardNote";
 import { getItemStyle } from "../Trello/TrelloStyled";
 import { ListNotesStyled } from "./ListNotesStyled";
@@ -11,12 +9,6 @@ interface ListNotesProps {
 }
 
 const ListNotes = ({ item, index }: ListNotesProps): JSX.Element => {
-  const { getNotes } = useNotes();
-
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
-
   return (
     <>
       <ListNotesStyled>
