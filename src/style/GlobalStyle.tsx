@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #000;
+    background-color: #711fb08b;
     border-radius: 10px;
     border: 0.5px solid #711fb08b;
     
@@ -74,6 +74,7 @@ button,
 textarea,
 select {
   font: inherit;
+  padding: 0;
 }
 
 p,
