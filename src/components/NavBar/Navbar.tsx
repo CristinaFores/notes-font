@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
-import { faHouse, faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { NavbarStyled } from "./NavbarStyled";
 
 interface NavbarProps {
@@ -13,17 +12,21 @@ const Navbar = ({ name }: NavbarProps): JSX.Element => {
     <nav>
       <NavbarStyled>
         <li className="profile">
-          <FontAwesomeIcon className="icon-profile" icon={faCircleUser} />
+          <FontAwesomeIcon icon={faCircleUser} />
           <h3>{name}</h3>
         </li>
         <li>
-          <NavLink to={"/newnote"} aria-label="Nueva publicacion">
-            <FontAwesomeIcon className="icon-navbar" icon={faSquarePlus} />
+          <NavLink
+            to={"/newnote"}
+            aria-label="Nueva publicacion"
+            className="icon-navbar"
+          >
+            New Task
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/home"} aria-label="Inicio">
-            <FontAwesomeIcon className="icon-navbar" icon={faHouse} />
+          <NavLink to={"/home"} aria-label="Inicio" className="icon-navbar">
+            Home
           </NavLink>
         </li>
       </NavbarStyled>
