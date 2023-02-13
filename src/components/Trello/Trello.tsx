@@ -23,7 +23,7 @@ const Trello = (): JSX.Element => {
       });
       return newColumns;
     });
-  }, [notes]);
+  }, [notes, newNotes]);
 
   const onDragEnd = async (result: DropResult) => {
     const { destination, source, draggableId } = result;
