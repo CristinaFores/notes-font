@@ -8,7 +8,7 @@ export const InputStyled = styled.input`
   margin-top: 1.25px;
   display: block;
   border-radius: 6px;
-  padding: 0.5rem 5px 0.3rem 5px;
+
   height: 50px;
 
   &:focus {
