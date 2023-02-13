@@ -3,26 +3,38 @@ import mainStyleColors from "../../style/themeColors";
 import { categoryColor } from "../../utils/CategoryColor";
 
 export const TrelloStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1104px;
+
   .continer {
-    display: flex;
-    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
+
   h2 {
     padding: 0.5rem;
     font-size: 1.2rem;
   }
   .column {
     display: flex;
+
+    height: min-content;
+    border-radius: 6px 6px 6px 6px;
+    align-content: space-between;
     flex-direction: column;
-    width: 250px;
-    max-height: 90px;
-    border-radius: 6px 6px 0 0;
     background-color: ${(props) => props.theme.colors.primary.light};
   }
 
   .column-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
     border-radius: 6px 6px 0 0;
     background-color: ${(props) => props.theme.colors.primary.light};
   }
@@ -39,7 +51,7 @@ export const TrelloStyled = styled.div`
     border-radius: 0px 0px 6px 6px;
     position: relative;
     align-items: center;
-
+    height: 40px;
     &:hover {
       background-color: ${(props) => props.theme.colors.button.hover};
       border-radius: 6px;

@@ -33,8 +33,8 @@ const useNotes = () => {
   const token = localStorage.getItem("token");
 
   const getNotes = useCallback(async () => {
-    setuiState(showLoading);
     try {
+      setuiState(showLoading);
       const { data } = await axios.get(`${apiUrl}/notes/`, {
         headers: {
           Authorization: "Bearer " + token,
@@ -59,6 +59,7 @@ const useNotes = () => {
   const createNote = useCallback(
     async (note: Note) => {
       setuiState(showLoading);
+
       try {
         await axios.post<Note>(`${apiUrl}/note/`, note, {
           headers: {
@@ -86,16 +87,15 @@ const useNotes = () => {
   );
   const deleteNote = useCallback(
     async (id: string) => {
-      setuiState(showLoading);
       try {
-        const { data } = await axios.delete<Note>(`${apiUrl}/note/${id}`, {
+        await axios.delete<Note>(`${apiUrl}/note/${id}`, {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
 
-        setuiState(hiddeLoading);
-        setNoteId(data.id!);
+        setNoteId(id);
+
         setuiState({
           modal: {
             showModal: true,
@@ -117,7 +117,7 @@ const useNotes = () => {
         });
       }
     },
-    [apiUrl, token]
+    [apiUrl, token, setNoteId]
   );
 
   const updateStatusNote = useCallback(
@@ -148,6 +148,7 @@ const useNotes = () => {
     uiState,
     note,
     noteId,
+
     setNotes,
     setNote,
     getNotes,

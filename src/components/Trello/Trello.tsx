@@ -10,7 +10,7 @@ import ListNotes from "../ListNotes/ListNotes";
 
 const Trello = (): JSX.Element => {
   const [columns, setColumns] = useState(data.columns);
-  const { notes, updateStatusNote } = useNotes();
+  const { notes, updateStatusNote, getNotes } = useNotes();
 
   const [newNotes, setNotes] = useState(notes);
 
@@ -23,7 +23,11 @@ const Trello = (): JSX.Element => {
       });
       return newColumns;
     });
-  }, [notes, newNotes]);
+  }, [notes, newNotes, setNotes]);
+
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
 
   const onDragEnd = async (result: DropResult) => {
     const { destination, source, draggableId } = result;
