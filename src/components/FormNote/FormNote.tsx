@@ -87,7 +87,7 @@ const FormNote = (): JSX.Element => {
           name="image"
           placeholder="imagen"
           htmlFor="image"
-          textLabel="Imagen*"
+          textLabel="Imagen"
           id="image"
           onChange={handleFileChange}
         />
