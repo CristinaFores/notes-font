@@ -25,10 +25,6 @@ const Trello = (): JSX.Element => {
     });
   }, [notes, newNotes, setNotes]);
 
-  useEffect(() => {
-    getNotes();
-  }, [getNotes]);
-
   const onDragEnd = async (result: DropResult) => {
     const { destination, source, draggableId } = result;
 
@@ -85,6 +81,10 @@ const Trello = (): JSX.Element => {
     setColumns(updatedColumns);
     await updateStatusNote(draggableId, newN?.at(-1)!);
   };
+
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
 
   return (
     <TrelloStyled>
