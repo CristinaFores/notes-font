@@ -3,12 +3,9 @@ import mainStyleColors from "../../style/themeColors";
 import { categoryColor } from "../../utils/CategoryColor";
 
 export const TrelloStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  max-width: 1104px;
+
+  padding: 2rem;
 
   .continer {
     list-style: none;
@@ -16,7 +13,7 @@ export const TrelloStyled = styled.div`
     padding: 0;
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 1.5rem;
   }
 

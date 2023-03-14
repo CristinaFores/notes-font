@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardNoteStyled = styled.div`
+export const CardNoteStyled = styled.li`
   text-decoration: none;
   color: #000;
   display: block;
