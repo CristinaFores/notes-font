@@ -5,8 +5,9 @@ export const NavbarStyled = styled.ul`
   display: flex;
   font-size: 1.2rem;
   gap: 1.2rem;
-  padding: 0 1rem;
-
+  padding: 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 1px ${(props) => props.theme.colors.primary.base};
   .icon-navbar {
     &:hover {
       color: ${(props) => props.theme.colors.button.hover};
