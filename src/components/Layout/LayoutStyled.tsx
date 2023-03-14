@@ -4,4 +4,6 @@ export const LayoutStyled = styled.main`
   display: flex;
   justify-content: center;
   width: 100%;
+
+  overflow: hidden;
 `;

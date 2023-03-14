@@ -10,6 +10,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import useNotes from "../../hooks/useNotes/useNotes";
+import { useNavigate } from "react-router-dom";
 
 export enum Category {
   "personal",
@@ -36,6 +37,19 @@ const CardNote = ({
   id,
 }: CardNoteProps): JSX.Element => {
   const { deleteNote } = useNotes();
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    deleteNote(id!);
+  };
+
+  const handleDetail = () => {
+    navigate(`/detail/${id}`);
+  };
+
+  const handleEdit = () => {
+    navigate(`/edit/${id}`);
+  };
 
   const categoryColor = (category: string) => {
     switch (category) {
@@ -52,10 +66,6 @@ const CardNote = ({
     }
   };
 
-  const handleDelete = () => {
-    deleteNote(id!);
-  };
-
   return (
     <>
       <CardNoteStyled>
@@ -68,7 +78,7 @@ const CardNote = ({
             ></div>
           </CategoryCircleStyled>
 
-          <button onClick={() => {}} aria-label="editar">
+          <button onClick={handleEdit} aria-label="editar">
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
           <button onClick={handleDelete} aria-label="borrar">
@@ -76,7 +86,7 @@ const CardNote = ({
           </button>
         </ContainIconEditStyled>
 
-        <ContaintNoteStyled>
+        <ContaintNoteStyled onClick={handleDetail}>
           <h4>{title.toUpperCase().substring(1, 0) + title.substring(1)}</h4>
           <span>{new Date(date || "").toLocaleDateString()}</span>
           <p>{description}</p>

@@ -85,6 +85,7 @@ const useNotes = () => {
     },
     [apiUrl, token, navigate]
   );
+
   const deleteNote = useCallback(
     async (id: string) => {
       try {
@@ -95,27 +96,7 @@ const useNotes = () => {
         });
 
         setNoteId(id);
-
-        setuiState({
-          modal: {
-            showModal: true,
-            isError: false,
-            text: "Nota eliminada correctamente",
-          },
-          isLoading: false,
-        });
-      } catch (error: unknown) {
-        setuiState(hiddeLoading);
-        setuiState({
-          modal: {
-            showModal: false,
-            isError: true,
-            text: "No hay ninguna nota disponible",
-          },
-
-          isLoading: false,
-        });
-      }
+      } catch (error: unknown) {}
     },
     [apiUrl, token, setNoteId]
   );
@@ -139,6 +120,37 @@ const useNotes = () => {
     [apiUrl, token]
   );
 
+  const getNoteById = useCallback(
+    async (id: string) => {
+      try {
+        const { data } = await axios.get<Note>(`${apiUrl}/note/${id}`, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+
+        setNote(data);
+        console.log(data);
+      } catch (error: unknown) {}
+    },
+    [apiUrl, token]
+  );
+
+  const updateNote = useCallback(
+    async (note: Note, id: string) => {
+      try {
+        await axios.patch<Note>(`${apiUrl}/notes/${id}`, note, {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+
+        navigate("/home");
+      } catch (error: unknown) {}
+    },
+    [apiUrl, token, navigate]
+  );
+
   useEffect(() => {
     getNotes();
   }, [getNotes]);
@@ -148,13 +160,14 @@ const useNotes = () => {
     uiState,
     note,
     noteId,
-
     setNotes,
     setNote,
     getNotes,
     createNote,
     deleteNote,
     updateStatusNote,
+    getNoteById,
+    updateNote,
   };
 };
 

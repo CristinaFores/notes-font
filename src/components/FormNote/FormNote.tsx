@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Note } from "../../hooks/useNotes/types";
 import useNotes from "../../hooks/useNotes/useNotes";
 import Button from "../Button/Button";
@@ -6,6 +7,9 @@ import Input from "../Input/Input";
 import { InputLabelStyled } from "../Input/InputStyled";
 import { TextSpanStyled } from "../Register/RegisterStyled";
 import { FormNoteStyled } from "./FormNoteStyled";
+interface FormNoteProps {
+  isEdit?: boolean;
+}
 
 interface InitialNoteData {
   title: string;
@@ -14,8 +18,10 @@ interface InitialNoteData {
   category: string;
 }
 
-const FormNote = (): JSX.Element => {
-  const { createNote } = useNotes();
+const FormNote = ({ isEdit = false }: FormNoteProps): JSX.Element => {
+  const { createNote, updateNote } = useNotes();
+  const { id } = useParams();
+
   const initialNote: InitialNoteData = {
     title: "",
     description: "",
@@ -58,8 +64,11 @@ const FormNote = (): JSX.Element => {
       image: formNote.image,
       category: formNote.category,
     };
-
-    await createNote(formDataToSubmit as Note);
+    if (!isEdit) {
+      await createNote(formDataToSubmit as Note);
+      return;
+    }
+    await updateNote(formDataToSubmit as Note, id!);
   };
 
   return (
