@@ -44,5 +44,6 @@ export const HeaderStyled = styled.header`
     color: #ffff;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
   }
 `;
