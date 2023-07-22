@@ -3,12 +3,18 @@ import { Note } from "../../hooks/useNotes/types";
 import CardNote from "../CardNote/CardNote";
 import { getItemStyle } from "../Trello/TrelloStyled";
 import { ListNotesStyled } from "./ListNotesStyled";
+
 interface ListNotesProps {
   item: Note;
   index: number;
+  deleteNoteList: (id: string) => void;
 }
 
-const ListNotes = ({ item, index }: ListNotesProps): JSX.Element => {
+const ListNotes = ({
+  item,
+  index,
+  deleteNoteList,
+}: ListNotesProps): JSX.Element => {
   return (
     <>
       <ListNotesStyled>
@@ -30,6 +36,7 @@ const ListNotes = ({ item, index }: ListNotesProps): JSX.Element => {
                 description={item.description}
                 date={item.date}
                 category={item.category}
+                handleDeleteNote={() => deleteNoteList(item.id!)}
               />
             </div>
           )}

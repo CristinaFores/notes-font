@@ -10,7 +10,7 @@ import ListNotes from "../ListNotes/ListNotes";
 
 const Trello = (): JSX.Element => {
   const [columns, setColumns] = useState(data.columns);
-  const { notes, updateStatusNote, getNotes } = useNotes();
+  const { notes, updateStatusNote, getNotes, deleteNote, noteId } = useNotes();
 
   const [newNotes, setNotes] = useState(notes);
 
@@ -84,7 +84,7 @@ const Trello = (): JSX.Element => {
 
   useEffect(() => {
     getNotes();
-  }, [getNotes]);
+  }, [getNotes, noteId]);
 
   return (
     <TrelloStyled>
@@ -103,7 +103,14 @@ const Trello = (): JSX.Element => {
                   >
                     {column.items
                       .map((item, index) => (
-                        <ListNotes key={item.id} item={item} index={index} />
+                        <ListNotes
+                          key={item.id}
+                          item={item}
+                          index={index}
+                          deleteNoteList={() => {
+                            deleteNote(item.id!);
+                          }}
+                        />
                       ))
                       .sort(
                         (dateAfter, dateBefore) =>

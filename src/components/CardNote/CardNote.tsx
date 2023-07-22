@@ -9,7 +9,6 @@ import {
   faPenToSquare,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
-import useNotes from "../../hooks/useNotes/useNotes";
 import { useNavigate } from "react-router-dom";
 
 export enum Category {
@@ -26,6 +25,7 @@ interface CardNoteProps {
   category?: Category | any;
   image?: string[];
   id?: string;
+  handleDeleteNote?: () => void;
 }
 
 const CardNote = ({
@@ -34,14 +34,12 @@ const CardNote = ({
   description,
   category,
   image,
+  handleDeleteNote,
   id,
 }: CardNoteProps): JSX.Element => {
-  const { deleteNote } = useNotes();
-  const navigate = useNavigate();
+  // const { deleteNote } = useNotes();
 
-  const handleDelete = () => {
-    deleteNote(id!);
-  };
+  const navigate = useNavigate();
 
   const handleDetail = () => {
     navigate(`/detail/${id}`);
@@ -81,7 +79,10 @@ const CardNote = ({
           <button onClick={handleEdit} aria-label="editar">
             <FontAwesomeIcon className="icon-edit" icon={faPenToSquare} />
           </button>
-          <button onClick={handleDelete} aria-label="borrar">
+          <button
+            onClick={() => handleDeleteNote && handleDeleteNote()}
+            aria-label="borrar"
+          >
             <FontAwesomeIcon className="icon-edit" icon={faCircleXmark} />
           </button>
         </ContainIconEditStyled>

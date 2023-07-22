@@ -98,7 +98,7 @@ const useNotes = () => {
         setNoteId(id);
       } catch (error: unknown) {}
     },
-    [apiUrl, token, setNoteId]
+    [apiUrl, token]
   );
 
   const updateStatusNote = useCallback(
